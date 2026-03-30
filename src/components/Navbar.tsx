@@ -29,11 +29,9 @@ const Navbar = () => {
 
             {/* Right Section: Mobile menu (Stories / Pricing only visible on desktop, mobile has slim CTA) and Desktop CTAs */}
             <div className="flex items-center gap-3">
-                <Link to="/pricing" className="hidden sm:block text-sm font-semibold text-white/80 hover:text-white transition-colors">
-                    Client Login
-                </Link>
+
                 <Link 
-                    to="/#registration" 
+                    to="/book-demo" 
                     className="relative px-5 py-2.5 bg-white text-[#030614] rounded-full text-sm font-semibold hover:bg-white border border-white/10 hover:scale-[1.02] shadow-[0_2px_10px_rgba(255,255,255,0.2)] transition-all"
                 >
                     Book a Demo

@@ -59,7 +59,7 @@ const Pricing = () => {
                     ))}
                 </ul>
 
-                <Link to="/#registration" className="block w-full">
+                <Link to="/book-demo" className="block w-full">
                     <button className="group relative overflow-hidden w-full bg-white text-[#030614] py-4 rounded-2xl font-semibold hover:bg-white/90 shadow-[0_4px_20px_rgba(255,255,255,0.2)] transition-all hover:scale-[1.01] tracking-tight text-[16px]">
                         <span className="relative z-10">Book a Technical Demo</span>
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-[150%] skew-x-[-15deg] group-hover:animate-shimmer z-0" />

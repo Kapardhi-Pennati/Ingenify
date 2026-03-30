@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -45,10 +46,10 @@ const Hero = () => {
                     className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full"
                 >
                     {/* Primary Button */}
-                    <a href="#registration" className="w-full sm:w-auto overflow-hidden group relative flex items-center justify-center px-8 py-4 bg-white/90 backdrop-blur-md rounded-full transition-all hover:bg-white hover:scale-[1.02] shadow-[0_4px_14px_rgba(255,255,255,0.25)] cursor-pointer">
+                    <Link to="/book-demo" className="w-full sm:w-auto overflow-hidden group relative flex items-center justify-center px-8 py-4 bg-white/90 backdrop-blur-md rounded-full transition-all hover:bg-white hover:scale-[1.02] shadow-[0_4px_14px_rgba(255,255,255,0.25)] cursor-pointer">
                         <span className="text-[#030614] text-[15px] sm:text-[17px] font-semibold font-sans tracking-tight relative z-10 w-full text-center">Start Your Project</span>
                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-[150%] skew-x-[-15deg] group-hover:animate-shimmer z-0" />
-                    </a>
+                    </Link>
 
                     {/* Secondary Button */}
                     <button className="w-full sm:w-auto overflow-hidden group relative flex items-center justify-center px-8 py-4 bg-white/[0.08] backdrop-blur-md border border-white/10 rounded-full transition-all hover:bg-white/[0.12] hover:scale-[1.02] cursor-pointer">
