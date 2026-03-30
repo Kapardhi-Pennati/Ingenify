@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 const Pricing = () => {
     return (
         <section className="relative w-full min-h-screen pt-32 pb-24 text-white overflow-hidden flex flex-col items-center z-10 p-4">
-            
+
             <div className="text-center space-y-4 mb-16 px-4">
-                <motion.h1 
+                <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="font-sans font-semibold text-5xl sm:text-6xl md:text-7xl tracking-[-0.03em] text-white"
                 >
                     Built for Scale.
                 </motion.h1>
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -25,7 +25,7 @@ const Pricing = () => {
             </div>
 
             {/* Apple Glass Custom Pricing Tier */}
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
@@ -34,7 +34,7 @@ const Pricing = () => {
                 <div className="flex justify-between items-start mb-8">
                     <div>
                         <h3 className="text-2xl font-serif text-white tracking-tight mb-2">Platform Custom</h3>
-                        <p className="text-sm font-sans text-white/50">Full-stack web applications, portals, and SaaS architecture.</p>
+                        <p className="text-sm font-sans text-white/50">Enterprise-grade security, 24/7 server runtime, and proactive management & maintenance.</p>
                     </div>
                 </div>
 
@@ -44,12 +44,11 @@ const Pricing = () => {
 
                 <ul className="space-y-4 mb-10 font-sans text-[15px] text-white/80">
                     {[
-                        "Dedicated Engineering Team",
-                        "Custom Node/React Architecture",
-                        "High-Performance Edge CDN",
-                        "Apple-Inspired Liquid Glass UI/UX",
-                        "256-bit Secure Authentication",
-                        "24/7 Priority DevOps SLA"
+                        "Advanced Security Protocols",
+                        "24/7 Guaranteed Server Runtime",
+                        "End-to-End Management & Maintenance",
+                        "Proactive Infrastructure Monitoring",
+                        "Automated Backups & Recovery"
                     ].map((feature, i) => (
                         <li key={i} className="flex items-center gap-3">
                             <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
