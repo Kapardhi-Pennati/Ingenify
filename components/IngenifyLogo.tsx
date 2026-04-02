@@ -1,46 +1,47 @@
-import { useId } from 'react';
+'use client';
 
 interface IngenifyLogoProps {
   className?: string;
   compact?: boolean;
+  size?: number;
 }
 
-export default function IngenifyLogo({ className = '', compact = false }: IngenifyLogoProps) {
-  const gradientId = useId().replace(/:/g, '');
-
+export default function IngenifyLogo({ className = '', compact = false, size = 60 }: IngenifyLogoProps) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <svg
-        width="44"
-        height="44"
-        viewBox="0 0 72 72"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
+    <div className={`flex items-center gap-6 ${className}`}>
+      {/* 
+        The Glass Monolith Optical Illusion. 
+        Optimized by removing heavy css drop-shadows and mix-blend-modes from moving elements, 
+        using pristine layered SVG opacity instead.
+      */}
+      <div 
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{ width: size, height: size }}
       >
-        <defs>
-          <linearGradient id={gradientId} x1="8" y1="10" x2="64" y2="60" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#8b93ff" />
-            <stop offset="1" stopColor="#38bdf8" />
-          </linearGradient>
-        </defs>
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full"
+        >
+          {/* Outer ring */}
+          <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+          
+          {/* Inner crystal architecture */}
+          <path d="M50 10 L85 50 L50 90 L15 50 Z" stroke="rgba(255,255,255,0.9)" strokeWidth="1.5" strokeLinejoin="miter" />
+          <path d="M50 10 L50 90" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+          <path d="M15 50 L85 50" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+          
+          {/* Refractive inner diamond core */}
+          <path d="M50 30 L65 50 L50 70 L35 50 Z" fill="rgba(255,255,255,0.7)" />
+        </svg>
+      </div>
 
-        <path
-          d="M14 36C14 25.3 21.6 18 30.2 18C36.6 18 41.2 22.1 45.8 29.1C50.2 35.8 52.7 39 56.7 39C60.8 39 64 35.6 64 30.8C64 24.8 59.2 20 52.9 20"
-          stroke={`url(#${gradientId})`}
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M58 36C58 46.7 50.4 54 41.8 54C35.4 54 30.8 49.9 26.2 42.9C21.8 36.2 19.3 33 15.3 33C11.2 33 8 36.4 8 41.2C8 47.2 12.8 52 19.1 52"
-          stroke={`url(#${gradientId})`}
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <circle cx="36" cy="36" r="4" fill={`url(#${gradientId})`} />
-      </svg>
-
-      {!compact && <span className="text-lg font-semibold tracking-tight text-white">Ingenify</span>}
+      {!compact && (
+        <span className="text-xl font-medium tracking-[0.2em] text-white uppercase font-sans">
+          Ingenify
+        </span>
+      )}
     </div>
   );
 }

@@ -9,6 +9,11 @@
   --accent: #6366f1;
   --accent-alt: #38bdf8;
   --glass-border: rgba(148, 163, 184, 0.2);
+
+  /* Infinity Theme (Blueprint - Dark Mode) */
+  --inf-bg: #050505;
+  --inf-text: #f8fafc;
+  --inf-grid: rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
@@ -28,31 +33,6 @@
   }
 }
 
-.glass-card {
-  position: relative;
-  border: 1px solid var(--glass-border);
-  background: linear-gradient(140deg, rgba(15, 23, 42, 0.64), rgba(2, 6, 23, 0.52));
-  backdrop-filter: blur(14px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 48px rgba(0, 0, 0, 0.35);
-}
-
-.glow-border {
-  position: relative;
-  isolation: isolate;
-}
-
-.glow-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: inherit;
-  background: linear-gradient(120deg, rgba(99, 102, 241, 0), rgba(99, 102, 241, 0.6), rgba(56, 189, 248, 0.55), rgba(99, 102, 241, 0));
-  opacity: 0.22;
-  filter: blur(14px);
-  animation: border-glow 6s ease-in-out infinite;
-}
-
 .aurora-blob {
   animation: aurora-float 18s ease-in-out infinite;
 }
@@ -62,10 +42,12 @@
 }
 
 @keyframes aurora-float {
+
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   50% {
     transform: translate3d(2%, -4%, 0) scale(1.08);
   }
@@ -75,16 +57,19 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
 
 @keyframes border-glow {
+
   0%,
   100% {
     opacity: 0.16;
   }
+
   50% {
     opacity: 0.34;
   }
@@ -106,3 +91,31 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #465076;
 }
+
+.infinity-theme {
+  background-color: var(--inf-bg);
+  color: var(--inf-text);
+  min-height: 100vh;
+  position: relative;
+}
+
+.inf-grid {
+  background-image: 
+    radial-gradient(circle, var(--inf-grid) 1px, transparent 1px),
+    linear-gradient(to right, var(--inf-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--inf-grid) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 48px 48px;
+  background-position: center top;
+}
+
+.inf-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  letter-spacing: -0.01em;
+}
+
+.inf-heading {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
