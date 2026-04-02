@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Instrument Sans"', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'serif'],
+        sans: ['"Inter"', 'sans-serif'],
       },
     },
   },
