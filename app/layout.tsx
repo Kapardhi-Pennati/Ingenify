@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+import { FluidParticlesBackground } from '@/components/FluidParticlesBackground';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,9 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} ${mono.variable} font-sans antialiased bg-black text-slate-100`}>
-        <SmoothScroll>{children}</SmoothScroll>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${mono.variable} font-sans antialiased dark:bg-black dark:text-slate-100 bg-white text-slate-900`}>
+        <FluidParticlesBackground>
+          <SmoothScroll>{children}</SmoothScroll>
+        </FluidParticlesBackground>
       </body>
     </html>
   );

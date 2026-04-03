@@ -16,6 +16,34 @@
   --inf-grid: rgba(255, 255, 255, 0.05);
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa;
+    --text: #1e293b;
+    --muted: #64748b;
+    --accent: #6366f1;
+    --accent-alt: #0ea5e9;
+    --glass-border: rgba(148, 163, 184, 0.3);
+
+    /* Infinity Theme Light Mode */
+    --inf-bg: #fafafa;
+    --inf-text: #1e293b;
+    --inf-grid: rgba(0, 0, 0, 0.05);
+  }
+}
+
+html.light {
+  --bg: #fafafa;
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: #6366f1;
+  --accent-alt: #0ea5e9;
+  --glass-border: rgba(148, 163, 184, 0.3);
+  --inf-bg: #fafafa;
+  --inf-text: #1e293b;
+  --inf-grid: rgba(0, 0, 0, 0.05);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -30,6 +58,22 @@
       radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.15), transparent 34%),
       var(--bg);
     overflow-x: hidden;
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      background:
+        radial-gradient(circle at 12% 6%, rgba(99, 102, 241, 0.1), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.08), transparent 34%),
+        var(--bg);
+    }
+  }
+
+  html.light body {
+    background:
+      radial-gradient(circle at 12% 6%, rgba(99, 102, 241, 0.1), transparent 30%),
+      radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.08), transparent 34%),
+      var(--bg);
   }
 }
 
@@ -118,4 +162,4 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-}
+}

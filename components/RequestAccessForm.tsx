@@ -65,22 +65,22 @@ export default function RequestAccessForm() {
   };
 
   const inputClass =
-    'w-full rounded-2xl border border-slate-500/30 bg-slate-900/60 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-indigo-300/70 focus:ring-2 focus:ring-indigo-400/20';
+    'w-full rounded-2xl border dark:border-slate-500/30 border-slate-400/40 dark:bg-slate-900/40 bg-slate-100/60 px-4 py-3 text-sm dark:text-slate-100 text-slate-900 outline-none transition dark:focus:border-indigo-300/70 focus:border-indigo-500/60 dark:focus:ring-2 focus:ring-2 dark:focus:ring-indigo-400/20 focus:ring-indigo-500/20';
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label htmlFor="name" className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-300">
+        <label htmlFor="name" className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600">
           Name
         </label>
         <input id="name" {...register('name')} className={inputClass} placeholder="Jordan Lee" />
-        {errors.name && <p className="mt-1 text-xs text-rose-300">{errors.name.message}</p>}
+        {errors.name && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.name.message}</p>}
       </div>
 
       <div>
         <label
           htmlFor="businessEmail"
-          className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-300"
+          className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600"
         >
           Business Email
         </label>
@@ -91,13 +91,13 @@ export default function RequestAccessForm() {
           className={inputClass}
           placeholder="jordan@company.com"
         />
-        {errors.businessEmail && <p className="mt-1 text-xs text-rose-300">{errors.businessEmail.message}</p>}
+        {errors.businessEmail && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.businessEmail.message}</p>}
       </div>
 
       <div>
         <label
           htmlFor="companySize"
-          className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-300"
+          className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600"
         >
           Company Size
         </label>
@@ -109,39 +109,39 @@ export default function RequestAccessForm() {
             </option>
           ))}
         </select>
-        {errors.companySize && <p className="mt-1 text-xs text-rose-300">{errors.companySize.message}</p>}
+        {errors.companySize && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.companySize.message}</p>}
       </div>
 
       <fieldset className="space-y-2">
-        <legend className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-300">Inquiry Type</legend>
+        <legend className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600">Inquiry Type</legend>
         <div className="grid gap-2 sm:grid-cols-2">
           {inquiryTypeOptions.map((inquiryType) => (
             <label
               key={inquiryType}
-              className="flex cursor-pointer items-center gap-2 rounded-2xl border border-slate-500/30 bg-slate-900/55 px-3 py-2 text-sm text-slate-100 transition hover:border-indigo-300/65"
+              className="flex cursor-pointer items-center gap-2 rounded-2xl dark:border-slate-500/30 border-slate-400/40 dark:bg-slate-900/55 bg-slate-100/50 px-3 py-2 text-sm dark:text-slate-100 text-slate-900 transition dark:hover:border-indigo-300/65 hover:border-indigo-500/50"
             >
               <input
                 type="radio"
                 value={inquiryType}
                 {...register('inquiryType')}
-                className="h-4 w-4 border-slate-400 text-indigo-500"
+                className="h-4 w-4 dark:border-slate-400 border-slate-500 dark:text-indigo-500 text-indigo-600"
               />
               <span>{inquiryType}</span>
             </label>
           ))}
         </div>
-        {errors.inquiryType && <p className="mt-1 text-xs text-rose-300">{errors.inquiryType.message}</p>}
+        {errors.inquiryType && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.inquiryType.message}</p>}
       </fieldset>
 
       {serverError && (
-        <div className="flex items-start gap-2 rounded-2xl border border-rose-400/35 bg-rose-500/10 p-3 text-sm text-rose-100">
+        <div className="flex items-start gap-2 rounded-2xl dark:border-rose-400/35 border-rose-300/40 dark:bg-rose-500/10 bg-rose-100/30 p-3 text-sm dark:text-rose-100 text-rose-700">
           <AlertTriangle className="mt-0.5 h-4 w-4" />
           <span>{serverError}</span>
         </div>
       )}
 
       {isSuccess && (
-        <div className="flex items-start gap-2 rounded-2xl border border-emerald-400/35 bg-emerald-500/10 p-3 text-sm text-emerald-100">
+        <div className="flex items-start gap-2 rounded-2xl dark:border-emerald-400/35 border-emerald-300/40 dark:bg-emerald-500/10 bg-emerald-100/30 p-3 text-sm dark:text-emerald-100 text-emerald-700">
           <CheckCircle2 className="mt-0.5 h-4 w-4" />
           <span>Request received. Our team will reach out shortly.</span>
         </div>
