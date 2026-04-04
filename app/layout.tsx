@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, IBM_Plex_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
-import { FluidParticlesBackground } from '@/components/FluidParticlesBackground';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,10 +16,16 @@ const mono = IBM_Plex_Mono({
   display: 'swap',
 });
 
+const display = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'Ingenify | Secure, Visible, and Scalable Digital Ecosystems',
+  title: 'Ingenify | Web Design, Development & Management',
   description:
-    'High-performance engineering partnership focused on architectural excellence, SEO engineering, and fortress-standard security.',
+    'We build high-performance websites that convert. Custom design, blazing-fast development, SEO engineering, and ongoing management — all under one roof.',
 };
 
 export default function RootLayout({
@@ -29,11 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${mono.variable} font-sans antialiased dark:bg-black dark:text-slate-100 bg-white text-slate-900`}>
-        <FluidParticlesBackground>
-          <SmoothScroll>{children}</SmoothScroll>
-        </FluidParticlesBackground>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${mono.variable} ${display.variable} font-sans antialiased bg-black text-slate-100`}
+      >
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

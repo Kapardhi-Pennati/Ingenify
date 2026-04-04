@@ -97,18 +97,10 @@ function createNoise() {
 }
 
 const COLOR_SCHEME = {
-  light: {
-    particle: {
-      color: "rgba(0, 0, 0, 0.07)",
-    },
-    background: "rgba(255, 255, 255, 0.12)",
+  particle: {
+    color: "rgba(255, 255, 255, 0.1)",
   },
-  dark: {
-    particle: {
-      color: "rgba(255, 255, 255, 0.07)",
-    },
-    background: "rgba(0, 0, 0, 0.12)",
-  },
+  background: "rgba(0, 0, 0, 0.10)",
 } as const;
 
 interface Particle {
@@ -145,7 +137,10 @@ export const FluidParticlesBackground = ({
 
     resizeCanvas(); // Initial resize
 
-    const particles: Particle[] = Array.from({ length: particleCount }, () => ({
+    // Use fewer particles on mobile for performance
+    const effectiveCount = window.innerWidth < 768 ? Math.min(particleCount, 800) : particleCount;
+
+    const particles: Particle[] = Array.from({ length: effectiveCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size:
@@ -157,12 +152,8 @@ export const FluidParticlesBackground = ({
     }));
 
     const animate = () => {
-      // Check for dark mode to apply theme-appropriate colors
-      const isDark = document.documentElement.classList.contains("dark");
-      const scheme = isDark ? COLOR_SCHEME.dark : COLOR_SCHEME.light;
-
       // Clear canvas with a semi-transparent background to create trails
-      ctx.fillStyle = scheme.background;
+      ctx.fillStyle = COLOR_SCHEME.background;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (const particle of particles) {
@@ -174,7 +165,7 @@ export const FluidParticlesBackground = ({
         }
 
         const opacity =
-          Math.sin((particle.life / particle.maxLife) * Math.PI) * 0.15; // Fade in and out
+          Math.sin((particle.life / particle.maxLife) * Math.PI) * 0.2; // Fade in and out
 
         // Use noise for particle movement direction
         const n = noise.simplex3(
@@ -197,9 +188,7 @@ export const FluidParticlesBackground = ({
         if (particle.y > canvas.height) particle.y = 0;
 
         // Draw particle
-        ctx.fillStyle = isDark
-          ? `rgba(255, 255, 255, ${opacity})`
-          : `rgba(0, 0, 0, ${opacity})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
@@ -222,8 +211,8 @@ export const FluidParticlesBackground = ({
 
     <div
       className={cn(
-        "relative w-full h-screen overflow-hidden", // h-screen для полноэкранности
-        "bg-white dark:bg-black", 
+        "relative w-full min-h-screen overflow-hidden",
+        "bg-black", 
         className,
       )}
     >

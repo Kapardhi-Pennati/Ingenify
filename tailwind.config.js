@@ -9,7 +9,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Inter"', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Space Grotesk', 'sans-serif'],
+        mono: ['var(--font-mono)', 'IBM Plex Mono', 'monospace'],
       },
     },
   },

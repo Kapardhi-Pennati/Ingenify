@@ -3,45 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #050505;
+  --bg: #000000;
   --text: #f8fafc;
-  --muted: #cbd5e1;
-  --accent: #6366f1;
-  --accent-alt: #38bdf8;
-  --glass-border: rgba(148, 163, 184, 0.2);
-
-  /* Infinity Theme (Blueprint - Dark Mode) */
-  --inf-bg: #050505;
-  --inf-text: #f8fafc;
-  --inf-grid: rgba(255, 255, 255, 0.05);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fafafa;
-    --text: #1e293b;
-    --muted: #64748b;
-    --accent: #6366f1;
-    --accent-alt: #0ea5e9;
-    --glass-border: rgba(148, 163, 184, 0.3);
-
-    /* Infinity Theme Light Mode */
-    --inf-bg: #fafafa;
-    --inf-text: #1e293b;
-    --inf-grid: rgba(0, 0, 0, 0.05);
-  }
-}
-
-html.light {
-  --bg: #fafafa;
-  --text: #1e293b;
   --muted: #64748b;
   --accent: #6366f1;
-  --accent-alt: #0ea5e9;
-  --glass-border: rgba(148, 163, 184, 0.3);
-  --inf-bg: #fafafa;
-  --inf-text: #1e293b;
-  --inf-grid: rgba(0, 0, 0, 0.05);
+  --accent-alt: #06b6d4;
 }
 
 @layer base {
@@ -53,104 +19,31 @@ html.light {
     margin: 0;
     min-height: 100vh;
     color: var(--text);
-    background:
-      radial-gradient(circle at 12% 6%, rgba(99, 102, 241, 0.2), transparent 30%),
-      radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.15), transparent 34%),
-      var(--bg);
+    background: #000000;
     overflow-x: hidden;
   }
-
-  @media (prefers-color-scheme: light) {
-    body {
-      background:
-        radial-gradient(circle at 12% 6%, rgba(99, 102, 241, 0.1), transparent 30%),
-        radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.08), transparent 34%),
-        var(--bg);
-    }
-  }
-
-  html.light body {
-    background:
-      radial-gradient(circle at 12% 6%, rgba(99, 102, 241, 0.1), transparent 30%),
-      radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.08), transparent 34%),
-      var(--bg);
-  }
 }
 
-.aurora-blob {
-  animation: aurora-float 18s ease-in-out infinite;
-}
-
-.aurora-blob-delay {
-  animation-delay: 2.5s;
-}
-
-@keyframes aurora-float {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(2%, -4%, 0) scale(1.08);
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes border-glow {
-
-  0%,
-  100% {
-    opacity: 0.16;
-  }
-
-  50% {
-    opacity: 0.34;
-  }
-}
+/* ── Scrollbar (ultra minimal) ── */
 
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2f3448;
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #465076;
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.infinity-theme {
-  background-color: var(--inf-bg);
-  color: var(--inf-text);
-  min-height: 100vh;
-  position: relative;
-}
-
-.inf-grid {
-  background-image: 
-    radial-gradient(circle, var(--inf-grid) 1px, transparent 1px),
-    linear-gradient(to right, var(--inf-grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--inf-grid) 1px, transparent 1px);
-  background-size: 48px 48px, 48px 48px, 48px 48px;
-  background-position: center top;
-}
+/* ── Utility classes ── */
 
 .inf-mono {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
@@ -158,8 +51,7 @@ html.light {
 }
 
 .inf-heading {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-display), 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }

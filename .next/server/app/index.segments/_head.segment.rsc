@@ -1,5 +1,0 @@
-1:"$Sreact.fragment"
-2:I[97367,["/_next/static/chunks/0h0qjw_d35u7q.js","/_next/static/chunks/0l0v.u5dvusae.js"],"ViewportBoundary"]
-3:I[97367,["/_next/static/chunks/0h0qjw_d35u7q.js","/_next/static/chunks/0l0v.u5dvusae.js"],"MetadataBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Ingenify | Secure, Visible, and Scalable Digital Ecosystems"}],["$","meta","1",{"name":"description","content":"High-performance engineering partnership focused on architectural excellence, SEO engineering, and fortress-standard security."}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"lGOcYgL_s1Fg4YsOOwTga"}
