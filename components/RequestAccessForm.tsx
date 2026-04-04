@@ -65,23 +65,33 @@ export default function RequestAccessForm() {
   };
 
   const inputClass =
-    'w-full rounded-2xl border dark:border-slate-500/30 border-slate-400/40 dark:bg-slate-900/40 bg-slate-100/60 px-4 py-3 text-sm dark:text-slate-100 text-slate-900 outline-none transition dark:focus:border-indigo-300/70 focus:border-indigo-500/60 dark:focus:ring-2 focus:ring-2 dark:focus:ring-indigo-400/20 focus:ring-indigo-500/20';
+    'w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-[13px] text-white/90 placeholder:text-white/20 outline-none transition-all duration-300 focus:border-indigo-400/40 focus:bg-white/[0.05] focus:ring-1 focus:ring-indigo-400/20 hover:border-white/[0.14]';
+
+  const labelClass =
+    'mb-2 block font-mono text-[9px] tracking-[0.25em] uppercase text-white/35 font-medium';
+
+  const errorClass = 'mt-1.5 font-mono text-[10px] tracking-wide text-rose-400/80';
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      {/* Name */}
       <div>
-        <label htmlFor="name" className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600">
+        <label htmlFor="name" className={labelClass}>
           Name
         </label>
-        <input id="name" {...register('name')} className={inputClass} placeholder="Jordan Lee" />
-        {errors.name && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.name.message}</p>}
+        <input
+          id="name"
+          {...register('name')}
+          className={inputClass}
+          placeholder="Jordan Lee"
+          autoComplete="name"
+        />
+        {errors.name && <p className={errorClass}>{errors.name.message}</p>}
       </div>
 
+      {/* Business Email */}
       <div>
-        <label
-          htmlFor="businessEmail"
-          className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600"
-        >
+        <label htmlFor="businessEmail" className={labelClass}>
           Business Email
         </label>
         <input
@@ -90,77 +100,118 @@ export default function RequestAccessForm() {
           {...register('businessEmail')}
           className={inputClass}
           placeholder="jordan@company.com"
+          autoComplete="email"
         />
-        {errors.businessEmail && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.businessEmail.message}</p>}
+        {errors.businessEmail && (
+          <p className={errorClass}>{errors.businessEmail.message}</p>
+        )}
       </div>
 
+      {/* Company Size */}
       <div>
-        <label
-          htmlFor="companySize"
-          className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600"
-        >
+        <label htmlFor="companySize" className={labelClass}>
           Company Size
         </label>
-        <select id="companySize" {...register('companySize')} className={inputClass}>
-          <option value="">Select your size</option>
-          {companySizeOptions.map((size) => (
-            <option key={size} value={size}>
-              {size}
+        <div className="relative">
+          <select
+            id="companySize"
+            {...register('companySize')}
+            className={`${inputClass} appearance-none cursor-pointer pr-10`}
+          >
+            <option value="" className="bg-black text-white/40">
+              Select your size
             </option>
-          ))}
-        </select>
-        {errors.companySize && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.companySize.message}</p>}
+            {companySizeOptions.map((size) => (
+              <option key={size} value={size} className="bg-black text-white/90">
+                {size}
+              </option>
+            ))}
+          </select>
+          {/* Custom chevron */}
+          <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              className="text-white/25"
+            >
+              <path
+                d="M3 4.5L6 7.5L9 4.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+        {errors.companySize && (
+          <p className={errorClass}>{errors.companySize.message}</p>
+        )}
       </div>
 
-      <fieldset className="space-y-2">
-        <legend className="mb-1 block text-xs uppercase tracking-[0.2em] dark:text-slate-300 text-slate-600">Inquiry Type</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
+      {/* Inquiry Type */}
+      <fieldset className="space-y-2.5">
+        <legend className={labelClass}>Inquiry Type</legend>
+        <div className="grid gap-2.5 sm:grid-cols-2">
           {inquiryTypeOptions.map((inquiryType) => (
             <label
               key={inquiryType}
-              className="flex cursor-pointer items-center gap-2 rounded-2xl dark:border-slate-500/30 border-slate-400/40 dark:bg-slate-900/55 bg-slate-100/50 px-3 py-2 text-sm dark:text-slate-100 text-slate-900 transition dark:hover:border-indigo-300/65 hover:border-indigo-500/50"
+              className="group flex cursor-pointer items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-3 text-[13px] text-white/60 transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04] hover:text-white/80 has-[:checked]:border-indigo-400/30 has-[:checked]:bg-indigo-500/[0.06] has-[:checked]:text-white/90"
             >
               <input
                 type="radio"
                 value={inquiryType}
                 {...register('inquiryType')}
-                className="h-4 w-4 dark:border-slate-400 border-slate-500 dark:text-indigo-500 text-indigo-600"
+                className="sr-only"
               />
-              <span>{inquiryType}</span>
+              {/* Custom radio indicator */}
+              <span className="relative flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-white/[0.15] transition-all duration-300 group-has-[:checked]:border-indigo-400/60 group-has-[:checked]:bg-indigo-500/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 opacity-0 transition-opacity duration-300 group-has-[:checked]:opacity-100" />
+              </span>
+              <span className="font-medium">{inquiryType}</span>
             </label>
           ))}
         </div>
-        {errors.inquiryType && <p className="mt-1 text-xs dark:text-rose-300 text-rose-600">{errors.inquiryType.message}</p>}
+        {errors.inquiryType && (
+          <p className={errorClass}>{errors.inquiryType.message}</p>
+        )}
       </fieldset>
 
+      {/* Server Error */}
       {serverError && (
-        <div className="flex items-start gap-2 rounded-2xl dark:border-rose-400/35 border-rose-300/40 dark:bg-rose-500/10 bg-rose-100/30 p-3 text-sm dark:text-rose-100 text-rose-700">
-          <AlertTriangle className="mt-0.5 h-4 w-4" />
+        <div className="flex items-start gap-2.5 rounded-xl border border-rose-500/20 bg-rose-500/[0.06] p-3.5 text-[12px] text-rose-300/90 backdrop-blur-sm">
+          <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>{serverError}</span>
         </div>
       )}
 
+      {/* Success Message */}
       {isSuccess && (
-        <div className="flex items-start gap-2 rounded-2xl dark:border-emerald-400/35 border-emerald-300/40 dark:bg-emerald-500/10 bg-emerald-100/30 p-3 text-sm dark:text-emerald-100 text-emerald-700">
-          <CheckCircle2 className="mt-0.5 h-4 w-4" />
+        <div className="flex items-start gap-2.5 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] p-3.5 text-[12px] text-emerald-300/90 backdrop-blur-sm">
+          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>Request received. Our team will reach out shortly.</span>
         </div>
       )}
 
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-indigo-300/70 bg-gradient-to-r from-indigo-500 to-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(99,102,241,0.35)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative mt-2 inline-flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-white px-6 py-3.5 text-[12px] font-bold tracking-[0.1em] uppercase text-black shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-500 hover:shadow-[0_0_60px_rgba(99,102,241,0.3)] hover:scale-[1.01] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
       >
+        {/* Gradient shine effect on hover */}
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-400/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
         {isSubmitting ? (
           <>
-            <LoaderCircle className="h-4 w-4 animate-spin" />
+            <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
             Sending...
           </>
         ) : (
           <>
             Request Access
-            <Send className="h-4 w-4" />
+            <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </>
         )}
       </button>
